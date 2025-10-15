@@ -3,135 +3,151 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Government Arts & Science College, Tirupattur — Event Countdown</title>
+  <title>GASC Tirupattur — College Portal</title>
   <link rel="icon" href="favicon.png" />
   <style>
-    :root{
+    :root {
       --gold: #ffd700;
       --bg1: #0f172a;
       --glass: rgba(255,255,255,0.06);
       --text: #f3f4f6;
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:20px;
-      background:linear-gradient(135deg,#071024 0%,#0b3a5b 50%,#0b2a2a 100%);
+    *{box-sizing:border-box;margin:0;padding:0}
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background:linear-gradient(135deg,#071024,#0b3a5b);
       color:var(--text);
+      min-height:100vh;
     }
-    .card{
-      width:100%;
-      max-width:1000px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-      border-radius:18px;
-      padding:32px;
-      box-shadow: 0 10px 40px rgba(2,6,23,0.6);
-      position:relative;
-      overflow:hidden;
+    header {
+      text-align:center;
+      padding:20px;
+      background:rgba(255,255,255,0.04);
+      border-bottom:1px solid rgba(255,255,255,0.1);
     }
-    header{ text-align:center; margin-bottom:18px }
-    header h1{
-      font-size:28px;
-      letter-spacing:1px;
-      background:linear-gradient(90deg,var(--gold), #fff8b3);
+    header h1 {
+      background:linear-gradient(90deg,var(--gold),#fff8b3);
       -webkit-background-clip:text;
       color:transparent;
+      font-size:32px;
     }
-    header p{ opacity:0.9; margin-top:6px }
-    .coming{ text-align:center; font-size:48px; font-weight:800; margin:22px 0; letter-spacing:4px; }
-    .theme{ background:var(--glass); padding:16px; border-left:5px solid var(--gold); border-radius:8px; margin-bottom:20px }
-    .programs{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-bottom:20px }
-    .card .prog{ background:rgba(255,255,255,0.03); padding:14px; border-radius:8px; min-width:180px; flex:1 1 200px }
-    .prog h3{ margin:0 0 8px 0; color:var(--gold) }
-    .countdown{ display:flex; gap:12px; justify-content:center; margin:20px 0; flex-wrap:wrap }
-    .count{ background:rgba(255,255,255,0.03); padding:12px 18px; border-radius:8px; min-width:84px; text-align:center }
-    .count .num{ font-size:28px; font-weight:700; color:var(--gold) }
-    .contact{ text-align:center; margin-top:18px; opacity:0.95 }
-    footer{ text-align:center; margin-top:22px; font-size:13px; opacity:0.8 }
-    /* floating decor */
-    .floating{
-      position:absolute; inset:0; pointer-events:none;
+    nav {
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+      background:rgba(255,255,255,0.05);
+      padding:10px;
     }
-    .dot{
-      position:absolute; width:var(--s,40px); height:var(--s,40px); border-radius:50%;
-      background:rgba(255,255,255,0.03); transform:translate(-50%,-50%); animation:float linear infinite;
+    nav a {
+      color:var(--text);
+      text-decoration:none;
+      padding:8px 14px;
+      border-radius:6px;
+      transition:0.3s;
     }
-    @keyframes float{
-      from { transform: translate(-50%,-40%) scale(1); opacity:0 }
-      10%{ opacity:1 }
-      90%{ opacity:1 }
-      to { transform: translate(-50%,-200%) scale(0.6); opacity:0 }
+    nav a:hover { background:rgba(255,255,255,0.1); color:var(--gold) }
+    section {
+      padding:40px 20px;
+      max-width:1100px;
+      margin:auto;
     }
-    @media(max-width:600px){
-      .coming{ font-size:28px }
-      header h1{ font-size:20px }
+    h2 { text-align:center; color:var(--gold); margin-bottom:20px }
+    /* Countdown */
+    .countdown { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:20px }
+    .count { background:var(--glass); padding:20px; border-radius:8px; min-width:100px; text-align:center }
+    .num { font-size:32px; font-weight:bold; color:var(--gold) }
+    /* Departments */
+    .grid { display:flex; flex-wrap:wrap; gap:16px; justify-content:center }
+    .card {
+      background:rgba(255,255,255,0.05);
+      border-radius:12px;
+      padding:20px;
+      width:260px;
+      transition:0.3s;
     }
+    .card:hover { transform:translateY(-4px); box-shadow:0 8px 20px rgba(0,0,0,0.4) }
+    .card h3 { color:var(--gold); margin-bottom:10px }
+    ul { list-style:none; padding-left:0 }
+    ul li { margin:6px 0 }
+    /* Events */
+    .event { background:rgba(255,255,255,0.03); border-left:4px solid var(--gold); padding:12px 18px; border-radius:8px; margin-bottom:10px }
+    /* Faculty */
+    .faculty { display:flex; flex-wrap:wrap; justify-content:center; gap:16px }
+    .teacher { text-align:center; background:rgba(255,255,255,0.05); padding:14px; border-radius:10px; width:200px }
+    .teacher img { width:100px; height:100px; border-radius:50%; margin-bottom:10px; border:2px solid var(--gold) }
+    /* Contact */
+    form { max-width:500px; margin:auto; display:flex; flex-direction:column; gap:12px }
+    input, textarea { padding:10px; border:none; border-radius:6px; background:rgba(255,255,255,0.1); color:white }
+    button { background:var(--gold); border:none; padding:10px; border-radius:6px; font-weight:bold; cursor:pointer }
+    button:hover { background:#f1d351 }
+    footer { text-align:center; padding:20px; font-size:13px; opacity:0.8; border-top:1px solid rgba(255,255,255,0.1) }
   </style>
 </head>
 <body>
-  <div class="card" role="main">
-    <div class="floating" id="floating"></div>
-    <header>
-      <h1>GOVERNMENT ARTS & SCIENCE COLLEGE</h1>
-      <p>Tirupattur – 635 901 · Affiliated to Thiruvalluvar University</p>
-    </header>
+  <header>
+    <h1>Government Arts & Science College, Tirupattur</h1>
+    <p>Affiliated to Thiruvalluvar University</p>
+  </header>
 
-    <div class="coming">COMING SOON</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#departments">Departments</a>
+    <a href="#events">Events</a>
+    <a href="#faculty">Faculty</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-    <section class="theme">
-      <h2 style="color:var(--gold);margin:0 0 8px 0">NATIONAL VOTER'S DAY 2024 — THEME</h2>
-      <p style="margin:0;font-weight:600">"NOTHING LIKE VOTING, I VOTE FOR SURE"</p>
-    </section>
-
-    <section class="programs" aria-label="Programs offered">
-      <div class="prog">
-        <h3>SCIENCE</h3>
-        <ul>
-          <li>B.C.A.</li>
-          <li>B.Sc. Computer Science</li>
-          <li>B.Sc. Mathematics</li>
-          <li>B.Sc. Physics</li>
-        </ul>
-      </div>
-      <div class="prog">
-        <h3>COMMERCE & BBA</h3>
-        <ul>
-          <li>B.B.A.</li>
-          <li>B.Com (General)</li>
-          <li>B.Com (CA)</li>
-        </ul>
-      </div>
-      <div class="prog">
-        <h3>ARTS</h3>
-        <ul>
-          <li>B.A. English</li>
-          <li>B.A. Tamil</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="countdown" aria-live="polite" aria-atomic="true">
+  <section id="home">
+    <h2>National Voter's Day 2025 Countdown</h2>
+    <div class="countdown">
       <div class="count"><div class="num" id="days">00</div><div>Days</div></div>
       <div class="count"><div class="num" id="hours">00</div><div>Hours</div></div>
       <div class="count"><div class="num" id="minutes">00</div><div>Minutes</div></div>
       <div class="count"><div class="num" id="seconds">00</div><div>Seconds</div></div>
-    </section>
-
-    <div class="contact">
-      <p>17°25'50.3"N 78°22'23.9"E · FEFF-725 Kumpetti, Tholdyam, Tamil Nadu</p>
-      <p>Email: info@college.edu.in · Phone: +91-1234567890</p>
     </div>
+  </section>
 
-    <footer>© 2025 Government Arts & Science College, Tirupattur. All Rights Reserved.</footer>
-  </div>
+  <section id="departments">
+    <h2>Departments</h2>
+    <div class="grid">
+      <div class="card"><h3>Science</h3><ul><li>B.Sc. Computer Science</li><li>B.Sc. Physics</li><li>B.Sc. Maths</li><li>BCA</li></ul></div>
+      <div class="card"><h3>Commerce</h3><ul><li>B.Com (General)</li><li>B.Com (CA)</li><li>BBA</li></ul></div>
+      <div class="card"><h3>Arts</h3><ul><li>B.A. English</li><li>B.A. Tamil</li></ul></div>
+    </div>
+  </section>
+
+  <section id="events">
+    <h2>Upcoming Events</h2>
+    <div class="event">📅 <b>Jan 25, 2025:</b> National Voter’s Day Celebration</div>
+    <div class="event">📅 <b>Feb 10, 2025:</b> Science Expo – Student Innovations</div>
+    <div class="event">📅 <b>Mar 5, 2025:</b> Annual Cultural Fest “Kalai Vizha”</div>
+  </section>
+
+  <section id="faculty">
+    <h2>Our Faculty</h2>
+    <div class="faculty">
+      <div class="teacher"><img src="https://via.placeholder.com/100" alt="Faculty 1"><p><b>Dr. R. Kumar</b><br>Principal</p></div>
+      <div class="teacher"><img src="https://via.placeholder.com/100" alt="Faculty 2"><p><b>Prof. S. Priya</b><br>Head, Computer Science</p></div>
+      <div class="teacher"><img src="https://via.placeholder.com/100" alt="Faculty 3"><p><b>Mr. A. Bala</b><br>Asst. Professor, Commerce</p></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <textarea id="message" rows="4" placeholder="Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <p id="msgStatus" style="text-align:center;margin-top:10px;"></p>
+  </section>
+
+  <footer>© 2025 Government Arts & Science College, Tirupattur. All Rights Reserved.</footer>
 
   <script>
-    // Countdown target: June 1, 2025 00:00 IST
+    // Countdown Timer
     (function(){
       const target = new Date('June 1, 2025 00:00:00').getTime();
       const ds = el('days'), hs = el('hours'), ms = el('minutes'), ss = el('seconds');
@@ -153,22 +169,15 @@
       update(); setInterval(update, 1000);
     })();
 
-    // Floating decorative dots
-    (function(){
-      const container = document.getElementById('floating');
-      const count = 12;
-      for(let i=0;i<count;i++){
-        const d = document.createElement('div');
-        d.className='dot';
-        const size = Math.round(Math.random()*50)+12;
-        d.style.setProperty('--s', size+'px');
-        d.style.left = Math.random()*110 + '%';
-        d.style.top = Math.random()*120 + '%';
-        d.style.animationDuration = (Math.random()*20+10)+'s';
-        d.style.animationDelay = (Math.random()*5)+'s';
-        container.appendChild(d);
-      }
-    })();
+    // Contact Form handler
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const msg = document.getElementById('msgStatus');
+      msg.style.color = "var(--gold)";
+      msg.textContent = `Thank you, ${name}! Your message has been received.`;
+      this.reset();
+    });
   </script>
 </body>
 </html>
